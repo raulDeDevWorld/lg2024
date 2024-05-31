@@ -74,20 +74,6 @@ function Item({ e1, e2 }) {
 
 function Section({ subtitle, video, gradiente, id, children, tarjetas }) {
   return <section className='relative w-full from-[#00195c31] via-[#27449200] to-[#2744923f]overflow-x-hidden overflow-hidden' id={id}>
-
-
-
-
-
-
-    {/* <div  className={`absolute top-0  w-full  object-cover z-10 ${gradiente}`} > */}
-
-    {/* <div  className='absolute px-5 py-12 w-full min-h-[100vh]  bg-gradient-to-tr from-[#000000c5] via-[#3259c5a9] to-[#2A52BE]'>
-          */}
-
-    {/* <div  className='absolute px-5 py-12 w-full min-h-screen flex flex-col z-30 lg:flex-row justify-around items-center  bg-gradient-to-tr from-[#000000c5] via-[#3259c5a9] to-[#2A52BE]'>
-          </div> */}
-
     <div className='relative px-5 py-12 w-full min-h-[50vh] mflex flex-col z-50 lg:flex-row justify-around items-center  bg-gradient-to-tr from-[#000000c5] via-[#3259c5a9] to-[#2A52BE] '>
       <div>
         <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{subtitle}</h3></Subtitle>
@@ -101,23 +87,12 @@ function Section({ subtitle, video, gradiente, id, children, tarjetas }) {
         </ScrollAnimation>
       </div>
       <div className='w-full text-[white] grid grid-cols-2 gap-5 py-12'>
-
-
-
-        {tarjetas && tarjetas !== undefined && Object.values(tarjetas).map((i, index) => <Item e1={i['ip0']} e2={i['ic0']} />)
-        }
-
-
-
+        {console.log(tarjetas && tarjetas !== undefined &&Object.values(tarjetas))}
+        {tarjetas && tarjetas !== undefined && Object.values(tarjetas).map((i, index) => <Item e1={i[`ip${index}`]} e2={i[`ic${index}`]} />)}
+        {/* <Item e1={i['ip0']} e2={i['ic0']} /> */}
       </div>
       <div className='grid grid-cols-2 gap-2 w-full '>
         <span></span>
-        {/* <button type="button" className="w-full  border-[2px]  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
-  Contactar
-  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-  </svg>
-</button> */}
 
         <button type="button" className="w-full border-[2px]  text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
           Orden de servicio
@@ -125,35 +100,19 @@ function Section({ subtitle, video, gradiente, id, children, tarjetas }) {
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
           </svg>
         </button>
-
-
       </div>
     </div>
     <div className='relative min-h-screen w-full flex flex-col lg:flex-wrap  lg:flex-row lg:justify-center justify-top z-20  '>
-      {/* <Subtitle> <h2  className="w-[100vw] text-[white] text-center text-[25px] font-medium">{subtitle}</h2></Subtitle> */}
-
       <video className='absolute bottom-0  w-full h-full min-h-[100vh] object-cover z-10' autoPlay loop muted>
         <source src={video} type="video/mp4" />
       </video>
       <div className='absolute top-0  w-full min-h-[100vh] h-full object-cover z-10 bg-gradient-to-tr from-[#00195cc2] via-[#2744924f] to-[#00195cbd] '></div>
-
-      {/* <div  className='relative px-5 py-12 w-full flex flex-col  lg:flex-row justify-around items-center  bg-gradient-to-tr from-[#2A52BE] via-[#3259c5] to-[#2A52BE]'>
-        </div> */}
-      {/* <div  className='relative px-5 py-12 w-full flex flex-col  lg:flex-row justify-around items-center  bg-gradient-to-tr from-[#2A52BE] via-[#3259c5] to-[#2A52BE]'>
-          <div> */}
-      {/* <div  className='relative px-5 py-12 w-full flex flex-col  lg:flex-row justify-around items-center '>
-          <div> */}
-
-
-
 
       {db.map((i, index) => {
         return <div className='inline px-5 z-50' key={index}>
           <Componente title={i.title} image={i.image} paragraph={i.paragraph} />
         </div>
       })}
-
-
 
     </div>
 
@@ -237,7 +196,7 @@ export default function Home() {
 
         <div className='absolute top-0  w-full min-h-[100vh] h-full object-cover z-10 bg-gradient-to-tr from-[#00195c] via-[#2744923f] to-[#00195c] '></div>
 
-{/* bg-[#1969ff67] bg-[#00000083]*/}
+        {/* bg-[#1969ff67] bg-[#00000083]*/}
         <div className='relative min-h-[100vh] h-full py-[50px] w-full lg:pt-10 pb-0 flex flex-col justify-around lg:flex-row items-center  z-20' style={{ background: '-gradient(to bottom, #000000,  #000000c7, #00000050' }}>
 
 
@@ -525,7 +484,7 @@ export default function Home() {
 
 
 
-      <Section subtitle={cliente['terrestre'].titulo} video={cliente['terrestre'].url} degrade='#00000067' tarjetas={cliente['maritimo'].tarjetas} id={cliente['maritimo'][0]}></Section>
+      <Section subtitle={cliente['terrestre'].titulo} video={cliente['terrestre'].url} degrade='#00000067' tarjetas={cliente['terrestre'].tarjetas} id={cliente['terrestre'][0]}></Section>
       <Section subtitle={cliente['maritimo'].titulo} video={cliente['maritimo'].url} degrade='#00000067' tarjetas={cliente['maritimo'].tarjetas} id={cliente['maritimo'][0]}></Section>
       {/* <Section subtitle={cliente['aereo'].titulo} video={cliente['aereo'].url} degrade='#00000067' tarjetas={cliente['aereo'].tarjetas} id={cliente['aereo'][0]}></Section> */}
 

@@ -40,14 +40,14 @@ export default function BottomNavigation({ rol }) {
     };
 
 
-    console.log(filter)
+    // console.log(filter)
     function handlerFilter(e) {
         setFilter(e.target.value)
         console.log(filter)
     }
 
 
-    console.log()
+    // console.log()
 
 
     useEffect(() => {
